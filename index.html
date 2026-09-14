@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NIPEX LAG | Key Generator</title>
+
+<style>
+
+:root {
+    --bg: #000000;
+    --card: #121212;
+    --text: #ffffff;
+    --accent: #00ff88;
+    --gray: #777777;
+    --border: #292929;
+    --telegram: #0088cc;
+    --error: #ff4444;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+#mainContainer {
+    display: none;
+}
+
+#bypassContainer {
+    display: none;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.card {
+    width: 100%;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.7);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    border: 2px solid var(--accent);
+
+    box-shadow:
+        0 0 30px
+        rgba(0,255,136,0.15);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+h1 {
+    margin: 0;
+
+    font-size: 28px;
+
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--gray);
+
+    font-size: 14px;
+
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   IP
+========================================= */
+
+.ip-title {
+    color: var(--gray);
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+#ipAddress {
+    color: var(--accent);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+    word-break: break-word;
+}
+
+
+/* =========================================
+   KEY
+========================================= */
+
+.key-title {
+    color: var(--gray);
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+}
+
+.key-box {
+    width: 100%;
+
+    background: #000000;
+
+    border: 1px dashed var(--accent);
+
+    border-radius: 18px;
+
+    padding: 22px 10px;
+
+    margin-bottom: 20px;
+
+    overflow: hidden;
+}
+
+#finalKey {
+    color: var(--accent);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    word-break: break-all;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.btn {
+    width: 100%;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    color: #000000;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+
+    background: var(--accent);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   TELEGRAM
+========================================= */
+
+.telegram {
+    background: var(--telegram);
+
+    color: #ffffff;
+}
+
+.telegram:hover {
+    background: #00aaff;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+    margin-top: 25px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+#error {
+    display: none;
+
+    color: var(--error);
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   BYPASS CARD
+========================================= */
+
+.error-card {
+    width: 100%;
+
+    background: #1a0a0a;
+
+    border: 1px solid #441111;
+
+    border-radius: 28px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 40px
+        rgba(255,0,0,0.1);
+}
+
+.error-icon {
+    font-size: 50px;
+
+    margin-bottom: 20px;
+}
+
+.error-title {
+    color: var(--error);
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.btn-red {
+    background: var(--error);
+
+    color: white;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    margin-top: 25px;
+
+    color: #333333;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 430px;
+    }
+
+    .card {
+        padding: 30px 20px;
+        border-radius: 24px;
+    }
+
+    .error-card {
+        padding: 35px 22px;
+        border-radius: 24px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .logo {
+        width: 85px;
+        height: 85px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL SCREEN
+========================================= */
+
+@media (max-width: 320px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 25px 15px;
+    }
+
+    #finalKey {
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =====================================
+         MAIN CONTAINER
+    ====================================== -->
+
+    <div id="mainContainer">
+
+        <div class="card">
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <img
+                    src="./assets/logo.png"
+                    alt="NIPEX">
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1>
+                NIPEX LAG
+            </h1>
+
+
+            <div class="subtitle">
+                Secure Daily License Generator
+            </div>
+
+
+            <!-- PUBLIC IP -->
+
+            <div class="ip-title">
+                YOUR PUBLIC IP
+            </div>
+
+
+            <div id="ipAddress">
+                CONNECTING...
+            </div>
+
+
+            <!-- LICENSE KEY -->
+
+            <div class="key-title">
+                YOUR LICENSE KEY
+            </div>
+
+
+            <div class="key-box">
+
+                <span id="finalKey">
+                    SECURE FETCHING...
+                </span>
+
+            </div>
+
+
+            <!-- COPY -->
+
+            <button
+                class="btn"
+                id="copyBtn"
+                onclick="copyKey()">
+
+                COPY LICENSE KEY
+
+            </button>
+
+
+            <!-- TELEGRAM -->
+
+            <button
+                class="btn telegram"
+                onclick="openTelegram()">
+
+                JOIN TELEGRAM
+
+            </button>
+
+
+            <!-- STATUS -->
+
+            <div
+                id="status"
+                class="status">
+
+                SYSTEM: CONNECTING
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div id="error">
+
+                Unable to connect to IP service.
+                Please check your internet connection.
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         BYPASS CONTAINER
+    ====================================== -->
+
+    <div id="bypassContainer">
+
+        <div class="error-card">
+
+            <div class="error-icon">
+                🚫
+            </div>
+
+            <div class="error-title">
+                Bypass Detected!
+            </div>
+
+            <p
+                style="
+                color:#888;
+                font-size:14px;
+                line-height:1.5;
+                ">
+
+                Direct access is prohibited.
+                Please use the official link
+                from the script to generate your key.
+
+            </p>
+
+
+            <button
+                class="btn btn-red"
+                onclick="location.href='steps.html'">
+
+                RETURN TO STEPS
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        NIPEX LAG SECURITY SYSTEM
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================
+   CONFIG
+========================================= */
+
+const IP_API =
+    "https://api.ipify.org?format=json";
+
+
+/*
+ * YOUR TELEGRAM CHANNEL
+ */
+
+const TELEGRAM_LINK =
+    "https://t.me/nipex_lag";
+
+
+/*
+ * Same year as Android
+ */
+
+const KEY_YEAR =
+    2026;
+
+
+
+/* =========================================
+   SECURITY CHECK
+========================================= */
+
+function checkSecurity() {
+
+    const urlParams =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const source =
+        urlParams.get("source");
+
+
+    const referrer =
+        document.referrer;
+
+
+    /*
+     * Official sources
+     */
+
+    const allowed =
+        source === "official" ||
+        referrer.includes("vplink.io") ||
+        referrer.includes("lootdest.org") ||
+        referrer.includes("steps.html");
+
+
+    if (allowed) {
+
+
+        /*
+         * Agar source=official hai
+         * to URL se source hata do
+         */
+
+        if (
+            source === "official"
+        ) {
+
+            const cleanUrl =
+                window.location.protocol +
+                "//" +
+                window.location.host +
+                window.location.pathname;
+
+
+            window.history.replaceState(
+                {},
+                document.title,
+                cleanUrl
+            );
+
+        }
+
+
+        /*
+         * Main generator show
+         */
+
+        document
+            .getElementById(
+                "mainContainer"
+            )
+            .style.display =
+            "block";
+
+
+        /*
+         * Generate key
+         */
+
+        generateLockedKey();
+
+
+        /*
+         * 6 AM refresh schedule
+         */
+
+        scheduleDailyRefresh();
+
+    }
+    else {
+
+
+        /*
+         * Direct/bypass access
+         */
+
+        document
+            .getElementById(
+                "mainContainer"
+            )
+            .style.display =
+            "none";
+
+
+        document
+            .getElementById(
+                "bypassContainer"
+            )
+            .style.display =
+            "block";
+
+    }
+
+}
+
+
+
+/* =========================================
+   GET PUBLIC IP
+========================================= */
+
+async function getPublicIP() {
+
+    const response =
+        await fetch(
+            IP_API,
+            {
+                cache: "no-store"
+            }
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "IP request failed"
+        );
+
+    }
+
+
+    const data =
+        await response.json();
+
+
+    if (!data.ip) {
+
+        throw new Error(
+            "IP not found"
+        );
+
+    }
+
+
+    return data.ip;
+
+}
+
+
+
+/* =========================================
+   INDIA TIME
+========================================= */
+
+function getIndiaTime() {
+
+    const parts =
+        new Intl.DateTimeFormat(
+            "en-US",
+            {
+                timeZone:
+                    "Asia/Kolkata",
+
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+
+                hour12: false
+            }
+        ).formatToParts(
+            new Date()
+        );
+
+
+    const values = {};
+
+
+    parts.forEach(
+        function(part) {
+
+            if (
+                part.type !== "literal"
+            ) {
+
+                values[
+                    part.type
+                ] =
+                    Number(
+                        part.value
+                    );
+
+            }
+
+        }
+    );
+
+
+    return {
+        year: values.year,
+        month: values.month,
+        day: values.day,
+        hour: values.hour,
+        minute: values.minute,
+        second: values.second
+    };
+
+}
+
+
+
+/* =========================================
+   DAILY CYCLE
+   RESET = 06:00 AM IST
+========================================= */
+
+function getDailyCycle() {
+
+    const india =
+        getIndiaTime();
+
+
+    /*
+     * 6 AM se pehle
+     * previous day's cycle
+     */
+
+    let year =
+        india.year;
+
+    let month =
+        india.month;
+
+    let day =
+        india.day;
+
+
+    if (
+        india.hour < 6
+    ) {
+
+        const previous =
+            new Date(
+                Date.UTC(
+                    year,
+                    month - 1,
+                    day
+                )
+            );
+
+
+        previous.setUTCDate(
+            previous.getUTCDate() - 1
+        );
+
+
+        year =
+            previous.getUTCFullYear();
+
+        month =
+            previous.getUTCMonth() + 1;
+
+        day =
+            previous.getUTCDate();
+
+    }
+
+
+    /*
+     * Stable daily number
+     */
+
+    return Math.floor(
+        Date.UTC(
+            year,
+            month - 1,
+            day
+        ) / 86400000
+    );
+
+}
+
+
+
+/* =========================================
+   NEXT 6:00 AM IST
+========================================= */
+
+function getMillisecondsUntilNextReset() {
+
+    const now =
+        new Date();
+
+
+    const india =
+        getIndiaTime();
+
+
+    /*
+     * Current India date ko
+     * UTC timestamp mein convert karo
+     */
+
+    let targetDate =
+        Date.UTC(
+            india.year,
+            india.month - 1,
+            india.day,
+            0,
+            30,
+            0
+        );
+
+
+    /*
+     * India 6 AM =
+     * UTC 00:30
+     */
+
+
+    /*
+     * Agar current India time
+     * 6 AM ya uske baad hai,
+     * next day 6 AM target karo.
+     */
+
+    if (
+        india.hour >= 6
+    ) {
+
+        targetDate +=
+            86400000;
+
+    }
+
+
+    /*
+     * Current UTC time se
+     * target tak difference
+     */
+
+    let delay =
+        targetDate -
+        now.getTime();
+
+
+    /*
+     * Safety fallback
+     */
+
+    if (
+        delay < 1000
+    ) {
+
+        delay =
+            1000;
+
+    }
+
+
+    return delay;
+
+}
+
+
+
+/* =========================================
+   GENERATE KEY
+========================================= */
+
+function generateKeyFromIP(ip) {
+
+
+    /*
+     * Daily cycle
+     */
+
+    const day =
+        getDailyCycle();
+
+
+    /*
+     * Remove dots
+     */
+
+    let cleanIP =
+        ip.replace(
+            /\./g,
+            ""
+        );
+
+
+    /*
+     * First 6 digits
+     */
+
+    if (
+        cleanIP.length > 6
+    ) {
+
+        cleanIP =
+            cleanIP.substring(
+                0,
+                6
+            );
+
+    }
+
+
+    /*
+     * IP seed
+     */
+
+    const ipSeed =
+        parseInt(
+            cleanIP,
+            10
+        );
+
+
+    /*
+     * Final seed
+     */
+
+    let seed =
+        ipSeed +
+        day +
+        KEY_YEAR;
+
+
+    /*
+     * Characters
+     */
+
+    const chars =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+
+    /*
+     * Key start
+     */
+
+    let finalKey =
+        "NIPEX-";
+
+
+    /*
+     * Four groups
+     */
+
+    for (
+        let i = 0;
+        i < 4;
+        i++
+    ) {
+
+
+        if (
+            i > 0
+        ) {
+
+            finalKey += "-";
+
+        }
+
+
+        /*
+         * Four characters
+         */
+
+        for (
+            let j = 0;
+            j < 4;
+            j++
+        ) {
+
+
+            const x =
+                Math.sin(
+                    seed++
+                ) * 10000;
+
+
+            const random =
+                Math.abs(
+                    x -
+                    Math.floor(x)
+                );
+
+
+            const index =
+                Math.floor(
+                    random *
+                    chars.length
+                );
+
+
+            finalKey +=
+                chars.charAt(
+                    index
+                );
+
+        }
+
+    }
+
+
+    return finalKey;
+
+}
+
+
+
+/* =========================================
+   AUTOMATIC GENERATION
+========================================= */
+
+async function generateLockedKey() {
+
+
+    const keyElement =
+        document.getElementById(
+            "finalKey"
+        );
+
+
+    const ipElement =
+        document.getElementById(
+            "ipAddress"
+        );
+
+
+    const statusElement =
+        document.getElementById(
+            "status"
+        );
+
+
+    const errorElement =
+        document.getElementById(
+            "error"
+        );
+
+
+    keyElement.innerText =
+        "SECURE FETCHING...";
+
+
+    ipElement.innerText =
+        "CONNECTING...";
+
+
+    statusElement.innerText =
+        "SYSTEM: GETTING IP";
+
+
+    errorElement.style.display =
+        "none";
+
+
+    try {
+
+
+        /*
+         * Get public IP
+         */
+
+        const ip =
+            await getPublicIP();
+
+
+        /*
+         * Display IP
+         */
+
+        ipElement.innerText =
+            ip;
+
+
+        /*
+         * Generate daily key
+         */
+
+        const key =
+            generateKeyFromIP(
+                ip
+            );
+
+
+        /*
+         * Display key
+         */
+
+        keyElement.innerText =
+            key;
+
+
+        statusElement.innerText =
+            "SYSTEM: NIPEX LAG";
+
+
+    }
+    catch (error) {
+
+
+        console.error(
+            error
+        );
+
+
+        ipElement.innerText =
+            "UNAVAILABLE";
+
+
+        keyElement.innerText =
+            "CONNECT TO INTERNET";
+
+
+        statusElement.innerText =
+            "SYSTEM: OFFLINE";
+
+
+        errorElement.style.display =
+            "block";
+
+    }
+
+}
+
+
+
+/* =========================================
+   AUTOMATIC 6 AM REFRESH
+========================================= */
+
+function scheduleDailyRefresh() {
+
+    const delay =
+        getMillisecondsUntilNextReset();
+
+
+    setTimeout(
+        async function() {
+
+
+            /*
+             * 6 AM par naya key
+             */
+
+            await generateLockedKey();
+
+
+            /*
+             * Next day's 6 AM
+             */
+
+            scheduleDailyRefresh();
+
+
+        },
+        delay
+    );
+
+}
+
+
+
+/* =========================================
+   COPY
+========================================= */
+
+async function copyKey() {
+
+
+    const key =
+        document
+            .getElementById(
+                "finalKey"
+            )
+            .innerText;
+
+
+    if (
+        key.includes("SECURE") ||
+        key.includes("CONNECT")
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+
+        await navigator
+            .clipboard
+            .writeText(
+                key
+            );
+
+
+        const button =
+            document.getElementById(
+                "copyBtn"
+            );
+
+
+        button.innerText =
+            "COPIED SUCCESSFULLY! ✓";
+
+
+        button.style.background =
+            "#00ff88";
+
+
+        setTimeout(
+            function() {
+
+
+                button.innerText =
+                    "COPY LICENSE KEY";
+
+
+                button.style.background =
+                    "#ffffff";
+
+
+            },
+            2000
+        );
+
+
+    }
+    catch (error) {
+
+
+        alert(
+            "Copy failed. Please copy the key manually."
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   TELEGRAM CHANNEL
+========================================= */
+
+function openTelegram() {
+
+    window.location.href =
+        TELEGRAM_LINK;
+
+}
+
+
+
+/* =========================================
+   START
+========================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        /*
+         * Pehle security check
+         */
+
+        checkSecurity();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
